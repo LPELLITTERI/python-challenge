@@ -1,14 +1,16 @@
 import os
 import csv
 
+File = "/Users/admin/python-challenge/PyBank/Resources/budget_data.csv"
+
 csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
 with  open(csvpath) as csv_file:
     csv_reader = csv.reader(csv.file, delimiter= ',')
     
     
-csv_header = next(csvreader)
-    print(f"CSV Header: {csv_header}")
+csv_header = next(csv.reader)
+print(f"CSV Header: {csv_header}")
 
    
 
