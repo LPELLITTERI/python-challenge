@@ -9,7 +9,9 @@ total_net= []
 change_in_loss = []
 greatest_profit_increase = []
 greatest_profit_decrease = []
-
+max_month = []
+index_min = []
+index_max = []
 
 
 #Path to file 
@@ -38,7 +40,7 @@ for row in budget_csv:
 time_months = (len("months"))
 
 #The net total amount of "Profit/Losses" over the entire period var3
-total_net = sum(Profit/Loss)
+total_net = sum("Profit/Loss")
 
 
 
@@ -50,20 +52,20 @@ change_in_loss = total_net / time_months
 greatest_profit_increase = max(greatest_profit_decrease)
 
 #Index of increase to find the date 
-index_greatest_increase = greatest_profit_decrease.index(max_profit_decrease)
-max_month = months[index_max]
+index_greatest_increase = greatest_profit_decrease.index("max_profit_decrease")
+max_month = time_months[index_max]
 
 
 
 #The greatest decrease in profits (date and amount) over the entire period var6
-min_profits = min(profits_loss)
+min_profits = min("profits_losses")
 
 
 #Using the index of the greatest decrease to find the date
-index_min = profits_loss.index(min_profits)
-min_months = months[index_min]
+index_min = "profits_losses".index(min_profits)
+min_months = time_months[index_min]
 
-financial_analysis = (f'''Financial Analysis
+
 
 
 
