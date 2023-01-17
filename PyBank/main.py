@@ -3,17 +3,21 @@ import os
 import csv
 
 
-File = "..Python-Challenge/Resources/budget_data.csv"
+File = (' ....Python-Challenge/budget_data.csv' ):
+
 #Path to file 
-budget_csv = os.path.join('budget_data.csv')
+csvfile = os.path.join('budget_data.csv'):
 
 
 #Open CSV
-with  open(budget_csv, newline= ",") as csv_file:
-    budget_csv = csv.reader(csv.file, delimiter= ',')
+with open('budget_data.csv', "r")as csvfile:
     
+    
+    budget_csv = csv.reader(csv.file, delimiter= ',')
+csvreader = csv.reader(csvfile,delimiter = ",")   
+
 #Header
-next(budget_csv)  
+header = next(csvfile)  
 
 
 #Variables to store data 
