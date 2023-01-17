@@ -3,10 +3,10 @@ import os
 import csv
 
 
-File = (' ....Python-Challenge/budget_data.csv' ):
+File = ('....Python-Challenge/PyBank/budget_data.csv' )
 
 #Path to file 
-csvfile = os.path.join('budget_data.csv'):
+csvfile = os.path.join('budget_data.csv')
 
 
 #Open CSV
