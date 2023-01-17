@@ -1,62 +1,69 @@
+#Import mods
 import os
 import csv
 
-File = "/Users/admin/python-challenge/PyBank/Resources/budget_data.csv"
+#Variables to store data 
+time_months = []
+profit_losses = []
+total_net= []
+change_in_loss = []
+greatest_profit_increase = []
+greatest_profit_decrease = []
 
-csvpath = os.path.join('..', 'Resources', 'budget_data.csv')
 
-with  open(csvpath) as csv_file:
-    csv_reader = csv.reader(csv.file, delimiter= ',')
+
+#Path to file 
+budget_csv = os.path.join('budget_data.csv')
+
+
+#Open CSV
+with  open(budget_csv, newline= "") as csv_file:
+    budget_csv = csv.reader(csv.file, delimiter= ',')
     
-    
-csv_header = next(csv.reader)
-print(f"CSV Header: {csv_header}")
-
+#Header
+next(budget_csv)  
    
-
-#for row in csv.reader:
-   # Date = row[0]
-    #Profit_Losses = row[1]
-
-#Date = len(row[0])
-
-
-
-
-
-#time_months = []
-#profit_losses = []
-#total_loss = []
-#change_in_loss = []
-#greatest_profit_increase_date_amount = []
-#greatest_profit_decrease_date_amount = []
+#Loop
+for row in budget_csv:
+    #date
+    time_months.append(row[0])
+    
+    #Profit/Loss
+    profit_losses.append(float(row[1]))
+    
+    
 
 
-#The total number of months included in the dataset var1
-
-#time_months = len(Date)
-#print(time_months)
+#Date #The total number of months included in the dataset var1
+time_months = (len("months"))
 
 #The net total amount of "Profit/Losses" over the entire period var3
+total_net = sum(Profit/Loss)
 
-#The changes in "Profit/Losses" over the entire period, and then the average of those changes var4
 
-#The greatest increase in profits (date and amount) over the entire period var 5
+
+#The changes in "Profit/Losses" average over month
+change_in_loss = total_net / time_months
+
+#The greatest increase in profits (date and amount)  var 5
+
+greatest_profit_increase = max(greatest_profit_decrease)
+
+#Index of increase to find the date 
+index_greatest_increase = greatest_profit_decrease.index(max_profit_decrease)
+max_month = months[index_max]
+
+
 
 #The greatest decrease in profits (date and amount) over the entire period var6
+min_profits = min(profits_loss)
 
 
+#Using the index of the greatest decrease to find the date
+index_min = profits_loss.index(min_profits)
+min_months = months[index_min]
 
-#with open(PyBank_path) as csvfile:
-    #csv_reader = csv.reader(csvfile, delimiter=',')
-
-
-#header = next(csv_reader)
-
-#for row in csv_reader:
-   # Date = row[0]
-    #Profit_Losses = row[1]
-
+financial_analysis = (f'''Financial Analysis
 
 
 
