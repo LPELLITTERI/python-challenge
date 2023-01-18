@@ -3,14 +3,14 @@ import os
 import csv
 
 
-File = ('....Python-Challenge/PyBank/budget_data.csv' )
+
 
 #Path to file 
-csvfile = os.path.join('budget_data.csv')
+PyBank_Path = os.path.join('budget_data.csv')
 
 
 #Open CSV
-with open('budget_data.csv', "r")as csvfile:
+with open('PyBank_Path', "r")as csvfile:
     
     
     budget_csv = csv.reader(csv.file, delimiter= ',')
