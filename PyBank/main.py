@@ -2,9 +2,6 @@
 import os
 import csv
 
-
-
-
 #Path to file 
 PyBank_Path = os.path.join('budget_data.csv')
 
@@ -12,12 +9,11 @@ PyBank_Path = os.path.join('budget_data.csv')
 #Open CSV
 with open('PyBank_Path', "r")as csvfile:
     
-    
-    budget_csv = csv.reader(csv.file, delimiter= ',')
-csvreader = csv.reader(csvfile,delimiter = ",")   
+    budget_csv = csv.reader(csvfile, delimiter= ',')
+
 
 #Header
-header = next(csvfile)  
+header = next(budget_csv)  
 
 
 #Variables to store data 
