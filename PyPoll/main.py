@@ -59,4 +59,7 @@ print(percent_won, '% of ')
     
     #calculate winner list name 
     
+  #Export to TXT  
+output = open("output.txt", "w")
+    
     

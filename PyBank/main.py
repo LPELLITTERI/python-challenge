@@ -68,8 +68,8 @@ index_min = "profits_losses".index(min_profits)
 min_months = time_months[index_min]
 
 
-
-
+#export to TXT file
+output = open("output.txt", "w")
 
 
 
