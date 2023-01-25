@@ -1,22 +1,25 @@
 #Import mods
 import os
 import csv
-
+list
 #Path to file 
 PyBank_Path = os.path.join('budget_data.csv')
 #output
 analysis_path = os.path.join('Analysis.txt')
 
 #Variables to store data 
+
 time_months = []
 profit_losses = []
 total_net= []
 change_in_loss = []
 greatest_profit_increase = ["", 0 ]
-greatest_profit_decrease = ["", 0 ]
+greatest_profit_decrease = ["", 9999999 ]
 max_month = []
 index_min = []
 index_max = []
+max_profit_decrease = []
+min_profits = []
 
 #Open CSV
 with open(PyBank_Path, "r")as csvfile:
@@ -54,25 +57,29 @@ with open(PyBank_Path, "r")as csvfile:
     time_months = (len(time_months))
 
     #The net total amount of "Profit/Losses" over the entire period var3
-    total_net = sum(profit_losses)
+    #total_net = sum(Profit/Losses)
+    
 
 
 
     #The changes in "Profit/Losses" average over month
-    change_in_loss = total_net / time_months
+    change_in_loss = (total_net / time_months)
 
     #The greatest increase in profits (date and amount)  var 5
-
+    
+    
     #max_profit_decrease = max(greatest_profit_decrease[1])
-
+    #greatest_profit_decrease = max(greatest_profit_decrease[1])
     #Index of increase to find the date 
-    #index_greatest_increase = greatest_profit_decrease.index(max_profit_decrease)
-    #max_month = time_months[index_max]
+    index_greatest_increase = greatest_profit_decrease.index(max_profit_decrease)
+    
+   #greatest increase time
+    max_month = time_months[index_max]
 
 
 
     #The greatest decrease in profits (date and amount) over the entire period var6
-    # min_profits = min(profits_losses)
+    #min_profits = min
 
 
     #Using the index of the greatest decrease to find the date
