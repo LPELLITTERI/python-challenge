@@ -1,7 +1,3 @@
-
-Sean Morey
-  6:17 PM
-@here our final code from the PyPoll activity:
 import os
 import csv
 
