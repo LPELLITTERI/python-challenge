@@ -8,81 +8,48 @@ PyBank_Path = os.path.join('budget_data.csv')
 analysis_path = os.path.join('Analysis.txt')
 
 #Variables to store data 
-
 time_months = []
 profit_losses = []
-total_net= []
+total_net= 0
 change_in_loss = []
 greatest_profit_increase = ["", 0 ]
 greatest_profit_decrease = ["", 9999999 ]
-max_month = []
-index_min = []
-index_max = []
-max_profit_decrease = []
-min_profits = []
+max_month = ""
+index_min = 0
+index_max = 0
+
 
 #Open CSV
 with open(PyBank_Path, "r")as csvfile:
-    
     budget_csv = csv.reader(csvfile, delimiter= ',')
 
 
     #Header
     header = next(budget_csv)  
 
-
-    # #Variables to store data 
-    # time_months = []
-    # profit_losses = []
-    # total_net= []
-    # change_in_loss = []
-    # greatest_profit_increase = []
-    # greatest_profit_decrease = []
-    # max_month = []
-    # index_min = []
-    # index_max = []
-   
     #Loop
-    for row in budget_csv:
-        #date
+    for i, row in enumerate(budget_csv):
+        #Date
         time_months.append(row[0])
         
         #Profit/Loss
-        profit_losses.append(float(row[1]))
+        profit_loss = float(row[1])
+        profit_losses.append(profit_loss)
+        total_net += profit_loss
         
-        
+        # Update greatest increase and decrease
+        if profit_loss > greatest_profit_increase[1]:
+            greatest_profit_increase = [row[0], profit_loss]
+            index_max = i
+        if profit_loss < greatest_profit_decrease[1]:
+            greatest_profit_decrease = [row[0], profit_loss]
+            index_min = i
 
+        # Calculate average change in profit/losses
+        for i in range(1, len(profit_losses)):
+        change_in_loss.append(profit_losses[i] - profit_losses[i-1])
+        avg_change_in_loss = sum(change_in_loss) / len(chan
 
-    #Date #The total number of months included in the dataset var1
-    time_months = (len(time_months))
-
-    #The net total amount of "Profit/Losses" over the entire period var3
-    #total_net = sum(Profit/Losses)
-    
-
-
-
-    #The changes in "Profit/Losses" average over month
-    change_in_loss = (total_net / time_months)
-
-    #The greatest increase in profits (date and amount)  var 5
-    
-    
-    #max_profit_decrease = max(greatest_profit_decrease[1])
-    #greatest_profit_decrease = max(greatest_profit_decrease[1])
-    #Index of increase to find the date 
-    index_greatest_increase = greatest_profit_decrease.index(max_profit_decrease)
-    
-   #greatest increase time
-    max_month = time_months[index_max]
-
-
-
-    #The greatest decrease in profits (date and amount) over the entire period var6
-    #min_profits = min
-
-
-    #Using the index of the greatest decrease to find the date
     
 #create output report
 output_report = (
@@ -90,7 +57,8 @@ output_report = (
     f"------------------\n"
     f"Total Months: {time_months}\n"
     f"Total Net: {total_net}\n"
-    
+    f"Average Change: {avg_change_in_loss:.2f}\n"
+    f"Greatest Increase in Prof
 )
 
 #print output report
