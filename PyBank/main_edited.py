@@ -52,10 +52,10 @@ with open(PyBank_Path, "r") as csvfile:
             index_min = len(time_months) - 1
 
     #Date #The total number of months included in the dataset
-    time_months = len(time_months)
+    num_months = len(time_months)
 
     #The changes in "Profit/Losses" average over month
-    change_in_loss = total_net / time_months
+    change_in_loss = total_net / num_months
 
     #The greatest increase in profits (date and amount)
     max_month = time_months[index_max]
@@ -67,7 +67,7 @@ with open(PyBank_Path, "r") as csvfile:
 output_report = (
     f"Financial Analysis\n"
     f"------------------\n"
-    f"Total Months: {time_months}\n"
+    f"Total Months: {num_months}\n"
     f"Total Net: {total_net:.2f}\n"
     f"Average Change: {change_in_loss:.2f}\n"
     f"Greatest Increase in Profits: {greatest_profit_increase[0]} (${greatest_profit_increase[1]:,.2f})\n"
