@@ -1,6 +1,15 @@
+#Import mods
 import os
 import csv
 
+#Path to file 
+PyPoll_Path = os.path.join('election_data.csv')
+
+#output
+analysis_path = os.path.join('Analysis.txt')
+
+
+#Open CSV
 def read_csv(csvpath):
     with open(csvpath) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
@@ -21,7 +30,7 @@ def count_candidate_votes(data):
     return candidate_vote_count
 
 path = os.path.join('Resources', 'election_data.csv')
-data = read_a_csv(path)
+data = read_csv(path)
 vote_counts = count_candidate_votes(data)
 # print(vote_counts)
 total_votes = sum(vote_counts.values())
@@ -30,7 +39,7 @@ total_votes = sum(vote_counts.values())
 # Building formatted output
 line = "---------------"
 print(line)
-print("ELECTION RESULTS")
+print(f"ELECTION RESULTS")
 print(line)
 print(f"Total Votes: {total_votes}")
 print(line)
