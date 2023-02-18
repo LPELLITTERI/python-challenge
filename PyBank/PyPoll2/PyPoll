@@ -1,7 +1,7 @@
 import os
 import csv
 
-def read_a_csv(csvpath):
+def read_csv(csvpath):
     with open(csvpath) as csvfile:
         csvreader = csv.reader(csvfile, delimiter=',')
         csv_header = next(csvreader)
