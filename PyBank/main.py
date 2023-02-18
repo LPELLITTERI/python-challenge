@@ -47,8 +47,8 @@ with open(PyBank_Path, "r")as csvfile:
 
         # Calculate average change in profit/losses
         for i in range(1, len(profit_losses)):
-        change_in_loss.append(profit_losses[i] - profit_losses[i-1])
-        avg_change_in_loss = sum(change_in_loss) / len(chan
+            change_in_loss.append(profit_losses[i] - profit_losses[i-1])
+            avg_change_in_loss = sum(change_in_loss) / len(change_in_loss)
 
     
 #create output report
@@ -58,7 +58,7 @@ output_report = (
     f"Total Months: {time_months}\n"
     f"Total Net: {total_net}\n"
     f"Average Change: {avg_change_in_loss:.2f}\n"
-    f"Greatest Increase in Prof
+    f"Greatest Increase in Profit"
 )
 
 #print output report
