@@ -2,7 +2,7 @@ import os
 import csv
 
 # Set file paths
-csv_path = os.path.join('Resources', 'election_data.csv')
+csv_path = os.path.join('election_data.csv')
 output_path = os.path.join('Analysis.txt')
 
 def read_csv(csv_path):

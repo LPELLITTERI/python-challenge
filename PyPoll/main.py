@@ -1,4 +1,3 @@
-#import mods
 import os
 import csv
 
@@ -6,60 +5,54 @@ import csv
 file = os.path.join('election_data.csv')
 
 #open csv
-
-with open("file", "r")as csvfile:
-    
-    csvreader = csv.reader(csvfile, delimiters = ',')
+with open(file, "r") as csvfile:
+    csvreader = csv.reader(csvfile, delimiter=',')
     
     #header
     header = next(csvreader)
     
-    
     #Variables
     voter_ids = []
-    candidates = {}
+    candidate_votes = {}
+    total_votes = 0
     
-    #sum of votes
-    total_vote = {}
-    #percentage won
-    percent_won =  {}
-    #total votes won by each candidate
-    total_won = {}
-    #list of candidates names
-    candidate = []
-    
-    
-    #loop thru list names 
+    #count all votes 
     for row in csvreader:
-        if row[2] not in candidates:
-            candidates.append(row[2])
-            
-            print(candidate)
+        total_votes += 1
+        candidate = row[2]
         
-
-    for key, value in candidates.items():
-        print(key, value)
-    
-   # count all votes 
-    for row in csvreader:
-        candidates = row [2]
-        
-        if candidates in candidate:
-            candidates[candidates]+= 1 
-            
+        if candidate in candidate_votes:
+            candidate_votes[candidate] += 1 
         else: 
-            candidates[candidate] = 1 
-            print(candidates)
+            candidate_votes[candidate] = 1
+    
+    #calculate percentage of votes won by each candidate
+    for candidate, votes in candidate_votes.items():
+        percent_won = (votes / total_votes) * 100
+        candidate_votes[candidate] = (votes, percent_won)
         
-   
-    #name votes percent won / votes total number won list
-    percentage = int("canditates"/len(candidate.items))*100
- 
-print(percent_won, '% of ')
+    #calculate winner
+    winner = max(candidate_votes, key=lambda k: candidate_votes[k][0])
     
-    #calculate winner list name 
+    #print results
+    print("Election Results")
+    print("-------------------------")
+    print(f"Total Votes: {total_votes}")
+    print("-------------------------")
+    for candidate, (votes, percent) in candidate_votes.items():
+        print(f"{candidate}: {percent:.3f}% ({votes})")
+    print("-------------------------")
+    print(f"Winner: {winner}")
+    print("-------------------------")
     
-  #Export to TXT  
-output = open("output.txt", "w")
-    
-    
+    #Export to TXT
+    with open("output.txt", "w") as text_file:
+        text_file.write("Election Results\n")
+        text_file.write("-------------------------\n")
+        text_file.write(f"Total Votes: {total_votes}\n")
+        text_file.write("-------------------------\n")
+        for candidate, (votes, percent) in candidate_votes.items():
+            text_file.write(f"{candidate}: {percent:.3f}% ({votes})\n")
+        text_file.write("-------------------------\n")
+        text_file.write(f"Winner: {winner}\n")
+        text_file.write("-------------------------\n")
